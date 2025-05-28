@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "114676525466",
+    "project_id": "authapp-f865a",
+    "storage_bucket": "authapp-f865a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114676525466:android:52ef610cfde6a462377223",
+        "android_client_info": {
+          "package_name": "com.example.seismosense"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114676525466-bv3rrs1dptefhvtjlub5m63uqpj2pqk8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.seismosense",
+            "certificate_hash": "dbb6b05145ed639311e74ee2550da49249d2f350"
+          }
+        },
+        {
+          "client_id": "114676525466-8ueg5n4uc4rjn8g8mg8crjlmet68ir8h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYWqIEcX_2nPpO_pcN-KQGB2EYq3WTaUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "114676525466-8ueg5n4uc4rjn8g8mg8crjlmet68ir8h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
