@@ -1,3 +1,6 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     id("com.android.application")
     // START: FlutterFire Configuration
@@ -44,8 +47,8 @@ android {
          manifestPlaceholders.putAll(
         mapOf(
             "appId" to "24128012766794058",
-            "fbLoginProtocolScheme" to "fb24128012766794058"
-            "MAPS_API_KEY" to mapsApiKey
+            "fbLoginProtocolScheme" to "fb24128012766794058",
+            "MAPS_API_KEY" to mapsApiKey,
         )
     )
     }

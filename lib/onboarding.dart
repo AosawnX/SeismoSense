@@ -8,6 +8,7 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController _pageController = PageController();
+  final GlobalKey<SlideActionState> _slideKey = GlobalKey();
   int _currentIndex = 0;
 
   final List<Map<String, String>> pages = [
@@ -89,7 +90,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 height: _currentIndex == index ? 12 : 8,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: _currentIndex == index ? Colors.red : const Color(0xFFFFE5E5),
+                  color:
+                      _currentIndex == index
+                          ? Colors.red
+                          : const Color(0xFFFFE5E5),
                 ),
               ),
             ),
@@ -99,54 +103,51 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           if (_currentIndex == pages.length - 1)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-              child: Builder(
-                builder: (context) {
-                  final GlobalKey<SlideActionState> _key = GlobalKey();
-                  return SlideAction(
-                    key: _key,
-                    borderRadius: 16,
-                    elevation: 4,
-                    outerColor: Colors.white,
-                    innerColor: Colors.red,
-                    sliderButtonIcon: TweenAnimationBuilder(
-                      tween: Tween(begin: 1.0, end: 1.2),
-                      duration: const Duration(seconds: 1),
-                      curve: Curves.easeInOut,
-                      builder: (context, scale, child) {
-                        return Transform.scale(
-                          scale: scale,
-                          child: const Icon(Icons.shield, color: Colors.white),
-                        );
-                      },
-                      onEnd: () {
-                        Future.delayed(const Duration(milliseconds: 500), () {
-                          if (mounted) setState(() {});
-                        });
-                      },
+              child: SlideAction(
+                key: _slideKey,
+                borderRadius: 16,
+                elevation: 4,
+                outerColor: Colors.white,
+                innerColor: Colors.red,
+                sliderButtonIcon: TweenAnimationBuilder(
+                  tween: Tween(begin: 1.0, end: 1.2),
+                  duration: const Duration(seconds: 1),
+                  curve: Curves.easeInOut,
+                  builder: (context, scale, child) {
+                    return Transform.scale(
+                      scale: scale,
+                      child: const Icon(Icons.shield, color: Colors.white),
+                    );
+                  },
+                  onEnd: () {
+                    Future.delayed(const Duration(milliseconds: 500), () {
+                      if (mounted) setState(() {});
+                    });
+                  },
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    Text(
+                      "Slide to get started",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black87,
+                      ),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Text(
-                          "Slide to get started",
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black87,
-                          ),
-                        ),
-                        SizedBox(width: 8),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          size: 16,
-                          color: Colors.black54,
-                        ),
-                      ],
+                    SizedBox(width: 8),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: 16,
+                      color: Colors.black54,
                     ),
-                    onSubmit: () {
-                      Navigator.pushReplacementNamed(context, '/siglogpage');
-                    },
-                  );
+                  ],
+                ),
+                onSubmit: () async {
+                  await Future.delayed(const Duration(milliseconds: 500));
+                  if (!mounted) return;
+                  Navigator.pushReplacementNamed(context, '/siglogpage');
                 },
               ),
             )
